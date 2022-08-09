@@ -32,4 +32,18 @@ export default class JobEntity {
       },
     });
   }
+  async find(jobId: string, userId: number) {
+    const user = await new UserEntity().find(userId);
+
+    if (!user) throw new NotFoundError("Not found");
+
+    const job = await prisma.job.findUnique({
+      where: {
+        uid: jobId,
+      },
+    });
+    if (!job) throw new NotFoundError("Not found");
+
+    return job;
+  }
 }

@@ -9,10 +9,11 @@ export type ApplicationFormsCreateResponseParams = {
   jobUid: string;
 };
 
-type FieldAttributes = {
+export type FieldAttributes = {
+  id: string;
   label: string;
   required: boolean;
-  type: FieldType;
+  type?: FieldType;
   fieldChoices?: FieldChoiceAttributes[];
 };
 
